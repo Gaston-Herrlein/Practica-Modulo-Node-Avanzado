@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NodePOP</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="mb-s">NodePOP</h1>
+      <h2 class="mb-l">Welcome to <%= subtitle %></h2>
+      <ul class="grid-container">
+        <% articles.forEach((article) => { %>
+            <li>
+                <h3><%= article.name %></h3>
+                <img src="/images/<%= article.photo %>" alt="<%= article.photo %>">
+                <br>
+                <strong><%= article.sale ? "Sale" : "Wanted" %></strong>
+                <p>Price <em><%= article.price %></em></p>
+                <p><%= article.tag %></p>
+            </li>
+        <% }); %>  
+      </ul>  
+    </div>
+  </body>
+</html>

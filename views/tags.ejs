@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NodePOP</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+    <div class="container">
+        <h1 class="mb-s">NodePOP</h1>
+        <h2 class="mb-s">Welcome to <%= subtitle %></h2>
+        <h3 class="mb-l">List of available tags</h3>
+        <ul class="flex-container">
+            <% tags.forEach((tag) => { %>
+            <li class="">
+                <a class="unstyle" href="#"><%= tag %></a>
+            </li>
+            <% }); %>
+        </ul> 
+    </div>
+</body>
+</html>
