@@ -1,6 +1,6 @@
 const readline = require("node:readline");
 const connection = require("./lib/connect-mongose");
-const Article = require("./models/article");
+const { Article, User } = require("./models");
 
 async function initArticle() {
   const deleted = await Article.deleteMany();
@@ -40,6 +40,26 @@ async function initArticle() {
   console.log(`Creados ${inserted.length} articulos.`);
 }
 
+async function initUsers() {
+  const deleted = await User.deleteMany();
+  console.log(`Eliminados ${deleted.deletedCount} usuarios.`);
+
+  // crear usuarios
+  const inserted = await User.insertMany([
+    {
+      name: "Admin",
+      email: "admin@example.com",
+      password: await User.hashPassword("1234"),
+    },
+    {
+      name: "User",
+      email: "user@example.com",
+      password: await User.hashPassword("1234"),
+    },
+  ]);
+  console.log(`Creados ${inserted.length} usuarios.`);
+}
+
 function pregunta(texto) {
   return new Promise((resolve, reject) => {
     // conectar readline con la consola
@@ -65,6 +85,8 @@ const main = async () => {
     process.exit();
   }
   await initArticle();
+  await initUsers();
   connection.close();
 };
+
 main().catch((err) => console.log("Hubo un error", err));
