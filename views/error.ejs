@@ -1,17 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NodePOP</title>
-    <link rel="stylesheet" href="../public/stylesheets/style.css">
-</head>
-<body>
-    <div class="container">
-        <h1><%= message %></h1>
-        <h2><%= error.status %></h2>
-        <pre><%= error.stack %></pre>
-    </div>
-</body>
-</html>
+<!--
+    Para mostrar el modal hay que:
+        agregegar clase "show" al div padr
+        Agregar estilo inline {display: block}
+        cambiar aria-hidden a "false"
+        Agregar propiedad role="dialog"
+-->
 
+<!-- Modal de error -->
+<div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="errorModalLabel">Error</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h3>
+                    <%= message %>
+                </h3>
+                <p>
+                    <%= error.status %>
+                </p>
+                <span>
+                    <%= error.stack %>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal de error -->
