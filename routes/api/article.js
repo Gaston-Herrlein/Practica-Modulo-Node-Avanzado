@@ -1,13 +1,12 @@
-/* eslint-disable linebreak-style */
-var express = require('express');
+var express = require("express");
 
 var router = express.Router();
-const Article = require('../../models/article');
+const Article = require("../../models/article");
 
 // GET /api/article
 // Devuelve una lista de article
 // http://localhost:3000/api/articles?start=1&limit=3&sort=name&tag=lifestyle
-router.get('/', async (req, res, next) => {
+router.get("/", async (req, res, next) => {
   try {
     // filtros
     const filterByName = req.query.name;
@@ -33,80 +32,76 @@ router.get('/', async (req, res, next) => {
     const articles = await Article.listar(filter, start, limit, sort, fields);
 
     // res.json({ results: articles });
-    res.render('articles', { subtitle: 'NodePOP with Express', articles });
-  }
-  catch (error) {
+    res.render("articles", { subtitle: "NodePOP with Express", articles });
+  } catch (error) {
     next(error);
   }
 });
 
 // GET /api/articles/tags
 // Devuelve una lista de tags
-router.get('/tags', async (req, res, next) => {
+router.get("/tags", async (req, res, next) => {
   try {
-    const tags = await Article.find({}).distinct('tag');
-    res.render('tags', { subtitle: 'NodePOP with Express', tags });
-  }
-  catch (error) {
+    const tags = await Article.find({}).distinct("tag");
+    res.render("tags", { subtitle: "NodePOP with Express", tags });
+  } catch (error) {
     next(error);
   }
 });
 
 // GET /api/articles/<_id>
 // Devuelve un article
-router.get('/:id', async (req, res, next) => {
+router.get("/:id", async (req, res, next) => {
   try {
     const { id } = req.params;
     const article = await Article.findById(id);
     res.json({ result: article });
-  }
-  catch (error) {
+  } catch (error) {
     next(error);
   }
 });
 
 // POST /api/article
 // Crea un article
-router.post('/', async (req, res, next) => {
+router.post("/", async (req, res, next) => {
   try {
     const data = req.body;
     const article = new Article(data);
     const articleGuardado = await article.save();
 
     res.json({ result: articleGuardado });
-  }
-  catch (error) {
+  } catch (error) {
     next(error);
   }
 });
 
 // PUT /api/articles/<_id> (body)
 // Actualiza un article
-router.put('/:id', async (req, res, next) => {
+router.put("/:id", async (req, res, next) => {
   try {
     const { id } = req.params;
     const data = req.body;
 
-    const articleActualizado = await Article.findByIdAndUpdate(id, data, { new: true });
+    const articleActualizado = await Article.findByIdAndUpdate(id, data, {
+      new: true,
+    });
 
     res.json({ result: articleActualizado });
-  }
-  catch (error) {
+  } catch (error) {
     next(error);
   }
 });
 
 // DELETE /api/articles/<_id>
 // Elimina un article
-router.delete('/:id', async (req, res, next) => {
+router.delete("/:id", async (req, res, next) => {
   try {
     const { id } = req.params;
 
     await Article.deleteOne({ _id: id });
 
     res.json();
-  }
-  catch (error) {
+  } catch (error) {
     next(error);
   }
 });
