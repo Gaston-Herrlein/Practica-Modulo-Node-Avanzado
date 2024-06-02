@@ -1,7 +1,7 @@
 var express = require("express");
 
 var router = express.Router();
-const Article = require("../../models/article");
+const { Article } = require("../../models");
 
 // GET /api/article
 // Devuelve una lista de article
