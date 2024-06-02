@@ -82,17 +82,22 @@ Los tests se deberán poder ejecutar con `npm test`.
 > - `GET` `/register` renderiza _register.ejs_
 > - `GET` `/login` renderiza _login.ejs_
 > - `GET` `/articles` renderiza _articles.ejs_
-> - `GET` `/articles/new` renderiza _newArticle.ejs_
 
 #### API
 
 > - `GET` `/api` renderiza _index.ejs_
-> - `GET` `/api/auth` controlador de autenticacion
 > - `GET` `/api/locals` controlar de idiomas
 > - `GET` `/api/articles` renderiza _articles.ejs_
-> - `POST` `/api/articles` controlador que permite crear un nuevo usuario
+> - `GET` `/api/articles/:id` renderiza _articles.ejs_ con un solo articulo
+> - `GET` `/api/articles/tags` renderiza _tags.ejs_
 > - `GET` `/api/articles/img` controlador que devuelve lista de imagenes de BD
+
+> - `POST` `/api/auth` controlador de autenticacion
+> - `POST` `/api/articles` controlador que permite crear un nuevo usuario
 > - `POST` `/api/articles/img` controlador que permite al usuario subir imagenes
+
+> - `PUT` `/api/articles/:id` se actualiza un articulo
+> - `DELETE` `/api/articles/:id` se elimina un articulo
 
 ## Views
 
@@ -112,10 +117,6 @@ Los tests se deberán poder ejecutar con `npm test`.
 
 ## Controladore
 
-- Auth
-
-  > Controlador con metodos necesatios para autenticarse y validar credenciales
-
 - Login
 
   > Controlador para loguearse
@@ -130,6 +131,6 @@ Los tests se deberán poder ejecutar con `npm test`.
 
 ## Models
 
-- **_users:_**
+- **_user:_**
 - **_article:_**
-- **_index:_**
+- **_index:_**: modulo que exporta users y article de forma conjunta
