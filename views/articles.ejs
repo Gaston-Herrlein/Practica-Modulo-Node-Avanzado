@@ -16,7 +16,9 @@
 
     <div class="container">
       <h1 class="mb-s">NodePOP</h1>
-      <h2 class="mb-l">Welcome to <%= subtitle %>
+      <h2 class="mb-l">
+        <%= __("Welcome to") %>
+          <%= subtitle %>
       </h2>
       <ul class="grid-container">
         <% articles.forEach((article)=> { %>
@@ -27,11 +29,13 @@
             <img src="/images/<%= article.photo %>" alt="<%= article.photo %>">
             <br>
             <strong>
-              <%= article.sale ? "Sale" : "Wanted" %>
+              <%= article.sale ? __("Sale") : __("Buy") %>
             </strong>
-            <p>Price <em>
-                <%= article.price %>
-              </em></p>
+            <p>
+              <%= __("Price") %> <em>
+                  <%= article.price %>€
+                </em>
+            </p>
             <p>
               <%= article.tag %>
             </p>

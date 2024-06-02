@@ -28,24 +28,31 @@
                                 <div class="form-floating mb-3">
                                     <input class="form-control" id="email" type="email" name="email"
                                         placeholder="name@example.com" data-sb-validations="required,email" />
-                                    <label for="email">Email address</label>
-                                    <div class="invalid-feedback" data-sb-feedback="email:required">An email is
-                                        required.</div>
-                                    <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.
+                                    <label for="email">
+                                        <%= __("Email address") %>
+                                    </label>
+                                    <div class="invalid-feedback" data-sb-feedback="email:required">
+                                        <%= __("An email is required.") %>
+                                    </div>
+                                    <div class="invalid-feedback" data-sb-feedback="email:email">
+                                        <%= __("Email is not valid.") %>
                                     </div>
                                 </div>
                                 <!-- Passwors input-->
                                 <div class="form-floating mb-3">
                                     <input class="form-control" id="password" type="password" name="password"
                                         placeholder="1234" data-sb-validations="required" />
-                                    <label for="password">Password</label>
-                                    <div class="invalid-feedback" data-sb-feedback="password:required">A password is
-                                        required.</div>
+                                    <label for="password">
+                                        <%= __("Password") %>
+                                    </label>
+                                    <div class="invalid-feedback" data-sb-feedback="password:required">
+                                        <%= __("A password is required.") %>
+                                    </div>
                                 </div>
                                 <!-- Submit Button-->
                                 <div class="d-grid">
                                     <button class="btn btn-primary btn-lg" id="submitButton" type="submit">
-                                        Submit
+                                        <%= __("Submit") %>
                                     </button>
                                 </div>
                             </form>

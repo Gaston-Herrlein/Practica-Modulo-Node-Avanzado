@@ -5,9 +5,12 @@ const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const logger = require("morgan");
 
+const i18n = require("./lib/i18nConfig");
+
 const indexRouter = require("./routes/index");
 const articleRouter = require("./routes/api/article");
 const authRouter = require("./routes/api/auth");
+const localeRouter = require("./routes/locale");
 const authJWT = require("./lib/authMiddleware");
 
 var app = express();
@@ -19,26 +22,14 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
 app.use(logger("dev"));
-// app.use(
-//   session({
-//     name: "WalaPop-session",
-//     secret: "sd7869f6789sfd8796sda87fsd978f768sdf8679s",
-//     saveUninitialized: true,
-//     resave: false,
-//     cookie: {
-//       maxAge: 1000 * 60 * 60 * 24, // 1d - expiración de la sesión por inactividad
-//     },
-//     store: MongoStore.create({
-//       mongoUrl: process.env.MONGODB_URL,
-//     }),
-//   })
-// );
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
+app.use(i18n.init);
 app.use("/", indexRouter);
+app.use("/change-locale", localeRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/articles", authJWT, articleRouter);
 
