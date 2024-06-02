@@ -1,7 +1,9 @@
 var express = require("express");
 
-var router = express.Router();
 const { Article } = require("../../models");
+const uploadFile = require("../../controllers/UploatFileController");
+
+var router = express.Router();
 
 // GET /api/article
 // Devuelve una lista de article
@@ -63,17 +65,21 @@ router.get("/:id", async (req, res, next) => {
 
 // POST /api/article
 // Crea un article
-router.post("/", async (req, res, next) => {
-  try {
-    const data = req.body;
-    const article = new Article(data);
-    const articleGuardado = await article.save();
-
-    res.json({ result: articleGuardado });
-  } catch (error) {
-    next(error);
+router.post(
+  "/",
+  uploadFile.upload,
+  uploadFile.uploadFile,
+  async (req, res, next) => {
+    // try {
+    //   const data = req.body;
+    //   const article = new Article(data);
+    //   const articleGuardado = await article.save();
+    //   res.json({ result: articleGuardado });
+    // } catch (error) {
+    //   next(error);
+    // }
   }
-});
+);
 
 // PUT /api/articles/<_id> (body)
 // Actualiza un article
