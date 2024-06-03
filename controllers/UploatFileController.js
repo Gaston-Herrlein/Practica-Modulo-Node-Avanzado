@@ -6,9 +6,9 @@ const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "./public/images");
   },
-  filename: function (req, file, cb) {
+  filename: async function (req, file, cb) {
     const name = Date.now() + "-" + file.originalname;
-    cb(null, name);
+    await cb(null, name);
     resizeImg(name);
   },
 });
