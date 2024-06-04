@@ -63,21 +63,29 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
-// POST /api/article
+// POST /api/articles
 // Crea un article
 router.post(
   "/",
   uploadFile.upload,
   uploadFile.uploadFile,
   async (req, res, next) => {
-    // try {
-    //   const data = req.body;
-    //   const article = new Article(data);
-    //   const articleGuardado = await article.save();
-    //   res.json({ result: articleGuardado });
-    // } catch (error) {
-    //   next(error);
-    // }
+    try {
+      const data = req.body;
+      const article = new Article(data);
+      const articleGuardado = await article.save();
+
+      const emailResult = await articleGuardado.enviarEmail(
+        "Articulo creado",
+        "Se ah creado el articulo correctamente"
+      );
+
+      // console.log(emailResult);
+
+      res.json({ result: articleGuardado });
+    } catch (error) {
+      next(error);
+    }
   }
 );
 

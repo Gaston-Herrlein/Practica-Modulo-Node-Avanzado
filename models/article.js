@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+const nodemailer = require("nodemailer");
+const createTransport = require("../lib/emailTransportConfig");
 
 const articleSchema = mongoose.Schema({
   name: { type: String, require: true, index: true },
@@ -15,6 +17,23 @@ articleSchema.statics.listar = (filtro, skip, limit, sort, fields) => {
   query.sort(sort);
   query.select(fields);
   return query.exec();
+};
+
+articleSchema.methods.enviarEmail = async function (asunto, cuerpo) {
+  const transport = await createTransport();
+
+  const result = await transport.sendMail({
+    from: process.env.EMAIL_SERVICE_FROM,
+    to: process.env.TO_EMAIL,
+    subject: asunto,
+    text: cuerpo,
+  });
+
+  // console.log(
+  //   `URL de previsualización: ${nodemailer.getTestMessageUrl(result)}`
+  // );
+
+  return result;
 };
 
 const Article = mongoose.model("Article", articleSchema);

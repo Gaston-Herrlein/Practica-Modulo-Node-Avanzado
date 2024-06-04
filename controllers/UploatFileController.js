@@ -17,6 +17,7 @@ const upload = multer({ storage: storage });
 
 exports.upload = upload.single("photo");
 
-exports.uploadFile = (req, res) => {
-  res.send({ data: "Imagen recibida" });
+exports.uploadFile = (req, res, next) => {
+  next();
+  // res.send({ data: "Imagen recibida" });
 };
