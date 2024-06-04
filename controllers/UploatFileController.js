@@ -8,6 +8,9 @@ const storage = multer.diskStorage({
   },
   filename: async function (req, file, cb) {
     const name = Date.now() + "-" + file.originalname;
+    //Guardo el nombre del archivo en el body de la peticion
+    req.body.photo = name;
+
     await cb(null, name);
     resizeImg(name);
   },
