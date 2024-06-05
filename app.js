@@ -32,6 +32,10 @@ app.use("/", indexRouter);
 app.use("/change-locale", localeRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/articles", authJWT, articleRouter);
+//En caso que no machee con los endpoint de arriba, redirecciona a index
+app.use("/api", (req, res, next) => {
+  res.redirect("/");
+});
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
