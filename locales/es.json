@@ -7,5 +7,12 @@
   "Contact": "Contacto",
   "Sale": "Venta",
   "Buy": "Compra",
-  "Price": "Precio"
+  "Price": "Precio",
+  "Email address": "Direccion de Email",
+  "An email is required.": "Se requiere un email",
+  "Email is not valid.": "Email no valido",
+  "Password": "Contraseña",
+  "A password is required.": "Se requiere una contraseña.",
+  "Submit": "Enviar",
+  "View": "Ver"
 }

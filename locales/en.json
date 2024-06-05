@@ -7,5 +7,12 @@
 	"Contact": "Contact",
 	"Sale": "Sale",
 	"Buy": "Buy",
-	"Price": "Price"
+	"Price": "Price",
+	"Email address": "Email address",
+	"An email is required.": "An email is required.",
+	"Email is not valid.": "Email is not valid.",
+	"Password": "Password",
+	"A password is required.": "A password is required.",
+	"Submit": "Submit",
+	"View": "View"
 }
