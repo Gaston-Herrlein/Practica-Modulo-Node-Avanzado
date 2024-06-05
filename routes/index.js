@@ -6,7 +6,7 @@ const router = express.Router();
 
 /* GET home page. */
 router.get("/", (req, res, next) => {
-  res.render("index", { subtitle: "NodePOP with Express" });
+  res.render("index", { subtitle: "NodePOP & Express" });
 });
 
 router.get("/register", (req, res, next) => {
@@ -22,7 +22,7 @@ router.get("/articles", async (req, res, next) => {
   try {
     const articles = await Article.find();
 
-    res.render("articles", { subtitle: "NodePOP with Express", articles });
+    res.render("articles", { subtitle: "NodePOP & Express", articles });
   } catch (error) {
     next(error);
   }
