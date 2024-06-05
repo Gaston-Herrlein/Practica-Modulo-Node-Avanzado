@@ -77,7 +77,15 @@ router.post(
 
       const emailResult = await articleGuardado.enviarEmail(
         "Articulo creado",
-        "Se ah creado el articulo correctamente"
+        `Se ah creado el anuncio correctamente. Ruta de la imagen:
+
+        Imagen original "./public/images/${articleGuardado.photo}"
+        Thumbnail: "./public/images/thumbnail/${articleGuardado.photo}"
+        
+        Gracias por confiar en nosotros.
+        Saludos cordiales.
+        Equipo de Node Pop
+        `
       );
 
       // console.log(emailResult);
