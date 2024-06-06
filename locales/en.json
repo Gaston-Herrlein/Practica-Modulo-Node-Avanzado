@@ -14,5 +14,9 @@
 	"Password": "Password",
 	"A password is required.": "A password is required.",
 	"Submit": "Submit",
-	"View": "View"
+	"View": "View",
+	"Login": "Login",
+	"Register": "Register",
+	"Full name": "Full name",
+	"A name is required.": "A name is required."
 }

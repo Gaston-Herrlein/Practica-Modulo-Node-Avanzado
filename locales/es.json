@@ -9,10 +9,14 @@
   "Buy": "Compra",
   "Price": "Precio",
   "Email address": "Direccion de Email",
-  "An email is required.": "Se requiere un email",
+  "An email is required.": "Se requiere un email.",
   "Email is not valid.": "Email no valido",
   "Password": "Contraseña",
   "A password is required.": "Se requiere una contraseña.",
   "Submit": "Enviar",
-  "View": "Ver"
+  "View": "Ver",
+  "Login": "Login",
+  "Register": "Regístro",
+  "Full name": "Nombre completo",
+  "A name is required.": "Se requiere un nombre."
 }
