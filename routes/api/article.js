@@ -68,7 +68,7 @@ router.get("/:id", async (req, res, next) => {
 router.post(
   "/",
   uploadFile.upload,
-  uploadFile.uploadFile,
+  uploadFile.publish,
   async (req, res, next) => {
     try {
       const data = req.body;
