@@ -2,6 +2,7 @@ const multer = require("multer");
 
 // const resizeImg = require("../lib/resizeImg");
 const publisherResize = require("../lib/publisherResize.js");
+const publisherEmail = require("../lib/publisherEmail.js");
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -23,6 +24,7 @@ exports.upload = upload.single("photo");
 
 exports.publish = (req, res, next) => {
   publisherResize(req.body.photo);
+  publisherEmail(req.body.photo);
   next();
   // res.send({ data: "Imagen recibida" });
 };
