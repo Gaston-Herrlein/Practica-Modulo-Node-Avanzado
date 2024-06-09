@@ -28,4 +28,15 @@ router.get("/articles", async (req, res, next) => {
   }
 });
 
+//Url para ver formulario de crear articulo sin autenticacion
+router.get("/new-article", async (req, res, next) => {
+  try {
+    const articles = await Article.find();
+
+    res.render("newArticle");
+  } catch (error) {
+    next(error);
+  }
+});
+
 module.exports = router;

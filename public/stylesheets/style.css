@@ -1,5 +1,17 @@
+/*Se agrega comentario para espesificar features no disponibles*/
 .not-available:hover {
   &::before {
-    content: "not available";
+    content: "Not available";
   }
+}
+
+/*Se quita boton con texto 'Seleccionar Archivo'*/
+input.form-control[type="file"]::-webkit-file-upload-button {
+  display: none;
+}
+
+/*Se quita botones laterales derechoos del input number*/
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
 }
