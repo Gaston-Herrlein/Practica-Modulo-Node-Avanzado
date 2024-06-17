@@ -76,28 +76,27 @@ Los tests se deberán poder ejecutar con `npm test`.
 
 ## Routes
 
-#### Vistas
+Se separan en dos tipos de rutas. Ya que la authenticacion se realizo mediante JWT, no seria posible ver determinadas vistas sin client que gestione ese token. Aunque se podria recurrir a herramientas como Postman eh decidido crear rutas alternativas para ver estas vistas sin necesidad de estar logueado.
 
-> - `GET` `/` renderiza _index.ejs_
-> - `GET` `/register` renderiza _register.ejs_
-> - `GET` `/login` renderiza _login.ejs_
-> - `GET` `/articles` renderiza _articles.ejs_
+#### Rutas sin auth
 
-#### API
+> - `GET` `/`: renderiza _index.ejs_
+> - `GET` `/register`: renderiza _register.ejs_
+> - `GET` `/login`: renderiza _login.ejs_
+> - `GET` `/articles`: renderiza _articles.ejs_
+> - `GET` `/new-article`: renderiza _newArticle.ejs_
+> - `GET` `/change-locale/:locale`: llama al controlador _.changeLocale_
+> - `GET` `/api`: renderiza _index.ejs_
+> - `POST` `/api/auth`: si las credenciales osn correctas genera un JWT para el usuario
 
-> - `GET` `/api` renderiza _index.ejs_
-> - `GET` `/api/locals` controlar de idiomas
-> - `GET` `/api/articles` renderiza _articles.ejs_
-> - `GET` `/api/articles/:id` renderiza _articles.ejs_ con un solo articulo
-> - `GET` `/api/articles/tags` renderiza _tags.ejs_
-> - `GET` `/api/articles/img` controlador que devuelve lista de imagenes de BD
+#### Rutas con auth
 
-> - `POST` `/api/auth` controlador de autenticacion
-> - `POST` `/api/articles` controlador que permite crear un nuevo usuario
-> - `POST` `/api/articles/img` controlador que permite al usuario subir imagenes
-
-> - `PUT` `/api/articles/:id` se actualiza un articulo
-> - `DELETE` `/api/articles/:id` se elimina un articulo
+> - `GET` `/api/articles`: renderiza _articles.ejs_
+> - `GET` `/api/articles/tags`: renderiza _tags.ejs_
+> - `GET` `/api/articles/:id`: renderiza _articles.ejs_ con un solo articulo
+> - `POST` `/api/articles`: controlador que permite crear un nuevo articulo
+> - `PUT` `/api/articles/:id`: se actualiza un articulo
+> - `DELETE` `/api/articles/:id`: se elimina un articulo
 
 ## Views
 
@@ -107,12 +106,13 @@ Los tests se deberán poder ejecutar con `npm test`.
   - _login.ejs_
   - _register.ejs_
   - _articles.ejs_
+  - _newArticles.ejs_
   - _tags.ejs_
+  - _error.ejs_: renderiza un modal que nos sirve para notificar errores
 
 - Vistas secundarias:
 
   - _navbar.ejs_: renderiza la barra de navegacion
-  - _error.ejs_: renderiza un modal que nos sirve para notificar errores
   - _footer.ejs_: renderiza el footer
 
 ## Controladore
@@ -129,8 +129,12 @@ Los tests se deberán poder ejecutar con `npm test`.
 
   > Controlador para cambiar de idioma
 
+- UploatFile
+
+  > Controlador para cargar las imagenes de los anuncios
+
 ## Models
 
-- **_user:_**
-- **_article:_**
+- **_user:_** modulo para definir estructura de usuarios
+- **_article:_** modulo para definir estructura de articulos
 - **_index:_**: modulo que exporta users y article de forma conjunta

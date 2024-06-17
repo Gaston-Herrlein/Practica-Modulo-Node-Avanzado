@@ -2,7 +2,6 @@ const createError = require("http-errors");
 const express = require("express");
 const path = require("path");
 const cookieParser = require("cookie-parser");
-const session = require("express-session");
 const logger = require("morgan");
 
 const i18n = require("./lib/i18nConfig");
@@ -32,6 +31,10 @@ app.use("/", indexRouter);
 app.use("/change-locale", localeRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/articles", authJWT, articleRouter);
+//In case it does not match the endpoints above, redirect to index
+app.use("/api", (req, res, next) => {
+  res.redirect("/");
+});
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

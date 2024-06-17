@@ -6,17 +6,16 @@ const uploadFile = require("../../controllers/UploatFileController");
 var router = express.Router();
 
 // GET /api/article
-// Devuelve una lista de article
 // http://localhost:3000/api/articles?start=1&limit=3&sort=name&tag=lifestyle
 router.get("/", async (req, res, next) => {
   try {
-    // filtros
+    // filter
     const filterByName = req.query.name;
     const filterByTag = req.query.tag;
-    // paginación
+    // pagination
     const { start } = req.query;
     const { limit } = req.query;
-    // ordenación
+    // order
     const { sort } = req.query;
     // field selection
     const { fields } = req.query;
@@ -33,7 +32,6 @@ router.get("/", async (req, res, next) => {
 
     const articles = await Article.listar(filter, start, limit, sort, fields);
 
-    // res.json({ results: articles });
     res.render("articles", { subtitle: "NodePOP with Express", articles });
   } catch (error) {
     next(error);
@@ -41,18 +39,16 @@ router.get("/", async (req, res, next) => {
 });
 
 // GET /api/articles/tags
-// Devuelve una lista de tags
 router.get("/tags", async (req, res, next) => {
   try {
     const tags = await Article.find({}).distinct("tag");
-    res.render("tags", { subtitle: "NodePOP with Express", tags });
+    res.render("tags", { subtitle: "NodePOP & Express", tags });
   } catch (error) {
     next(error);
   }
 });
 
 // GET /api/articles/<_id>
-// Devuelve un article
 router.get("/:id", async (req, res, next) => {
   try {
     const { id } = req.params;
@@ -63,26 +59,25 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
-// POST /api/article
-// Crea un article
+// POST /api/articles
 router.post(
   "/",
   uploadFile.upload,
-  uploadFile.uploadFile,
+  uploadFile.publish,
   async (req, res, next) => {
-    // try {
-    //   const data = req.body;
-    //   const article = new Article(data);
-    //   const articleGuardado = await article.save();
-    //   res.json({ result: articleGuardado });
-    // } catch (error) {
-    //   next(error);
-    // }
+    try {
+      const data = req.body;
+      const article = new Article(data);
+      const articleGuardado = await article.save();
+
+      res.json({ result: articleGuardado });
+    } catch (error) {
+      next(error);
+    }
   }
 );
 
-// PUT /api/articles/<_id> (body)
-// Actualiza un article
+// PUT /api/articles/<_id>
 router.put("/:id", async (req, res, next) => {
   try {
     const { id } = req.params;
@@ -99,7 +94,6 @@ router.put("/:id", async (req, res, next) => {
 });
 
 // DELETE /api/articles/<_id>
-// Elimina un article
 router.delete("/:id", async (req, res, next) => {
   try {
     const { id } = req.params;

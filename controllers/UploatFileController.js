@@ -1,15 +1,18 @@
 const multer = require("multer");
 
-const resizeImg = require("../lib/resizeImg");
+const publisherResize = require("../lib/publisherResize.js");
+const publisherEmail = require("../lib/publisherEmail.js");
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "./public/images");
   },
-  filename: function (req, file, cb) {
+  filename: async function (req, file, cb) {
     const name = Date.now() + "-" + file.originalname;
-    cb(null, name);
-    resizeImg(name);
+    //Save the file name in the body of the request
+    req.body.photo = name;
+
+    await cb(null, name);
   },
 });
 
@@ -17,6 +20,8 @@ const upload = multer({ storage: storage });
 
 exports.upload = upload.single("photo");
 
-exports.uploadFile = (req, res) => {
-  res.send({ data: "Imagen recibida" });
+exports.publish = (req, res, next) => {
+  publisherResize(req.body.photo);
+  publisherEmail(req.body.photo);
+  next();
 };
