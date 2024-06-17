@@ -29,10 +29,6 @@ articleSchema.methods.enviarEmail = async function (asunto, cuerpo) {
     text: cuerpo,
   });
 
-  // console.log(
-  //   `URL de previsualización: ${nodemailer.getTestMessageUrl(result)}`
-  // );
-
   return result;
 };
 

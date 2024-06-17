@@ -14,7 +14,6 @@ async function main() {
   const { channel, connection } = await publisherConfig();
 
   await channel.assertExchange(EXCHANGE_NAME, "direct", {
-    //Para las pruebas mismo criterio y configuracion que publisher
     durable: false,
   });
 
@@ -27,7 +26,7 @@ async function main() {
   canal.consume(q.queue, async (msg) => {
     const payload = msg.content;
     const { type, content } = JSON.parse(payload);
-    //Vuelvo a comprobar el tipo anes de realizar la tarea asignada
+
     if (type === "email") {
       await Article.enviarEmail(content);
       canal.ack(msg);

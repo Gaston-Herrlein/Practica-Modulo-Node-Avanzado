@@ -4,7 +4,6 @@ const { Article } = require("../models");
 
 const router = express.Router();
 
-/* GET home page. */
 router.get("/", (req, res, next) => {
   res.render("index", { subtitle: "NodePOP & Express" });
 });
@@ -17,7 +16,7 @@ router.get("/login", (req, res, next) => {
   res.render("login");
 });
 
-//Url para ver articulos sin autenticacion
+//Endpoint to view articles without auth
 router.get("/articles", async (req, res, next) => {
   try {
     const articles = await Article.find();
@@ -28,7 +27,7 @@ router.get("/articles", async (req, res, next) => {
   }
 });
 
-//Url para ver formulario de crear articulo sin autenticacion
+//Endpoint to create article form without auth
 router.get("/new-article", async (req, res, next) => {
   try {
     const articles = await Article.find();

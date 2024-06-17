@@ -14,7 +14,6 @@ async function main() {
   const { channel, connection } = await publisherConfig();
 
   await channel.assertExchange(EXCHANGE_NAME, "direct", {
-    //Para las pruebas mismo criterio y configuracion que publisher
     durable: false,
   });
 
