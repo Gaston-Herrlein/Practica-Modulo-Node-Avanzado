@@ -10,29 +10,35 @@
 </head>
 
 <body>
-    <div class="container">
-        <h1 class="mb-s">NodePOP</h1>
-        <h2 class="mb-s">
-            <%= __("Welcome to") %>
-                <%= subtitle %>
-        </h2>
-        <h3 class="mb-l">
-            <%= __("List of available tags") %>
-        </h3>
-        <ul class="flex-container">
-            <% tags.forEach((tag)=> { %>
-                <li class="">
-                    <a class="unstyle" href="#">
-                        <%= tag %>
-                    </a>
-                </li>
-                <% }); %>
-        </ul>
-    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-        </script>
+    <%- include('./partials/navBar.ejs') %>
+
+        <div class="container">
+            <h1 class="mb-s">NodePOP</h1>
+            <h2 class="mb-s">
+                <%= __("Welcome to") %>
+                    <%= subtitle %>
+            </h2>
+            <h3 class="mb-l">
+                <%= __("List of available tags") %>
+            </h3>
+            <ul class="flex-container">
+                <% tags.forEach((tag)=> { %>
+                    <li class="">
+                        <a class="unstyle" href="#">
+                            <%= tag %>
+                        </a>
+                    </li>
+                    <% }); %>
+            </ul>
+        </div>
+
+        <%- include('./partials/footer.ejs') %>
+
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+                crossorigin="anonymous">
+                </script>
 
 </body>
 
