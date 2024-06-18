@@ -1,7 +1,7 @@
 const multer = require("multer");
 
-const publisherResize = require("../lib/publisherResize.js");
-const publisherEmail = require("../lib/publisherEmail.js");
+const publisherResize = require("../service/publisher/publisherResize.js");
+const publisherEmail = require("../service/publisher/publisherEmail.js");
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
