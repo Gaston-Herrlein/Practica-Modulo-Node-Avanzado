@@ -1,5 +1,5 @@
 "use strict";
-const publisherConfig = require("./publisherConfig.js");
+const publisherConfig = require("../../config/publisherConfig.js");
 const { Article } = require("../../models");
 
 require("dotenv").config();
