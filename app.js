@@ -10,7 +10,7 @@ const indexRouter = require("./routes/index");
 const articleRouter = require("./routes/api/article");
 const authRouter = require("./routes/api/auth");
 const localeRouter = require("./routes/locale");
-const authJWT = require("./config/authMiddleware");
+const authJWT = require("./middleware/authMiddleware");
 
 var app = express();
 
