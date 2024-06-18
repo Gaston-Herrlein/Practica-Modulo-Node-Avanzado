@@ -1,16 +1,16 @@
-const publisherConfig = require("../config/publisherConfig.js");
-const emailFormatter = require("./emailFormatter.js");
+const publisherConfig = require("../../config/publisherConfig.js");
 
 const EXCHANGE_NAME = "Article-task";
 
-module.exports = async function publisherEmail(name) {
-  const { channel, connection } = publisherConfig();
+module.exports = async function publisherResize(name) {
+  //I create the connection to RabbitMQ
+  const { channel, connection } = await publisherConfig();
 
   let keepSending;
 
   let msg = {
-    type: "email",
-    content: emailFormatter(name),
+    type: "resize",
+    content: name,
   };
 
   keepSending = channel.publish(
@@ -22,7 +22,7 @@ module.exports = async function publisherEmail(name) {
   //If the channel is overflowing, we wait until we can send tasks again, and call the function recursively
   if (!keepSending) {
     await new Promise((resolve) => channel.on("drain", resolve));
-    publisherEmail(name);
+    publisherResize(name);
   }
 
   setTimeout(() => {
