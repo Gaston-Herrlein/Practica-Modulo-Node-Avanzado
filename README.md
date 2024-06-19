@@ -67,6 +67,10 @@ Los tests se deberán poder ejecutar con `npm test`.
 
 ## Resolucion.
 
+### NOTA: Para inicializar la Base de datos con los datos de prueba ejecute:
+
+> `node init-mongoose.js`
+
 ### Índice de contenido:
 
 - [Se definen rutas](#Routes)
