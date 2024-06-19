@@ -4,17 +4,17 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 
-const i18n = require("./lib/i18nConfig");
+const i18n = require("./config/i18nConfig");
 
 const indexRouter = require("./routes/index");
 const articleRouter = require("./routes/api/article");
 const authRouter = require("./routes/api/auth");
 const localeRouter = require("./routes/locale");
-const authJWT = require("./lib/authMiddleware");
+const authJWT = require("./middleware/authMiddleware");
 
 var app = express();
 
-require("./lib/connect-mongose");
+require("./config/connect-mongose");
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));

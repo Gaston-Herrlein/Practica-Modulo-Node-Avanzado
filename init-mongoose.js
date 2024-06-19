@@ -1,5 +1,5 @@
 const readline = require("node:readline");
-const connection = require("./lib/connect-mongose");
+const connection = require("./config/connect-mongose");
 const { Article, User } = require("./models");
 
 async function initArticle() {

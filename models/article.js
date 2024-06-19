@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const nodemailer = require("nodemailer");
-const createTransport = require("../lib/emailTransportConfig");
+const createTransport = require("../config/emailTransportConfig");
 
 const articleSchema = mongoose.Schema({
   name: { type: String, require: true, index: true },
