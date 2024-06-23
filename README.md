@@ -6,8 +6,6 @@
 
 📅 03 Junio 2024
 
-# TENGO QUE CARGAR USUSARIOS EN LA BBDD
-
 ## Enunciado del ejercicio:
 
 ### Índice de retos:
